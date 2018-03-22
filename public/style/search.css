@@ -1,0 +1,210 @@
+body {
+    padding-bottom: 2vh;
+}
+
+#main-content {
+    width: 65vw;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    background-color: #E8E8E8;
+    padding-bottom: 2vh;
+}
+
+@media screen and (max-width: 800px) {
+    #main-content {
+        width: 100vw;
+    }
+}
+
+@media screen and (max-width: 1000px) and (min-width: 801px) {
+    #main-content {
+        width: 75vw;
+    }
+}
+
+/* Search bar modified from: https://codepen.io/berkpw/pen/KzONKo*/
+
+#search-form {
+    outline: 0;
+    border-radius: 4px;
+    background-color: inherit;
+}
+
+/* Most of this button CSS was taken from somewhere but I forget where :/*/
+#main-content .display-btn {
+    text-align: center;
+    margin: 0 auto;
+    display: block;
+    margin-top: 1vh;
+
+  overflow: hidden;
+  padding: 12px 12px;
+  cursor: pointer;
+  user-select: none;
+  transition: all 150ms linear;
+  text-align: center;
+  white-space: nowrap;
+  text-decoration: none !important;
+  text-transform: none;
+  text-transform: capitalize;
+  color: #fff;
+  border: 0 none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.3;
+
+  -webkit-appearance: none;
+  -moz-appearance:    none;
+  appearance:         none;
+
+  box-shadow: 2px 5px 10px var(--color-smoke);
+
+  &:hover {
+    transition: all 150ms linear;
+
+    opacity: .85;
+  }
+
+  &:active {
+    transition: all 150ms linear;
+    opacity: .75;
+  }
+
+  &:focus {
+    outline: 1px dotted #959595;
+    outline-offset: -4px;
+  }
+}
+
+.display-btn.green {
+  color: #FFFFFF;
+  background: #416dea;
+}
+
+#form-container {
+    margin-left: 50%;
+    transform: translateX(-50%);
+    position: relative;
+    width: 90%;
+}
+
+#form-container>.textbox {
+    position: absolute;
+    top: 0;
+    left: 0;
+    outline: 0;
+    height: 50px;
+    width: 90%;
+    line-height: 50px;
+    font-size: 18px;
+    font-family: "Arial";
+    padding: 0 16px;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #212121;
+    border: 0;
+    -webkit-border-radius: 4px 0 0 0;
+    border-radius: 4px 0 0 4px;
+}
+
+#form-container>.textbox:focus {
+    outline: 0;
+    background-color: #FFF;
+}
+
+#form-container>.search-button {
+    margin-left: 90%;
+    background-color: rgba(38, 50, 56, 0.8);
+    height: 100%;
+    width: 10%;
+    text-align: center;
+    line-height: 50px;
+    border: 0;
+    color: #FFF;
+    font-size: 16px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    -webkit-transition: background-color .4s ease;
+    transition: background-color .4s ease;
+    -webkit-border-radius: 0 4px 4px 0;
+    border-radius: 0 4px 4px 0;
+}
+
+#form-container>.search-button:hover {
+    background-color: rgba(0, 150, 136, 0.8);
+}
+
+@media screen and (max-width: 500px) {
+    #form-container>.search-button {
+        width: 42px;
+    }
+}
+
+#results-container {
+    padding-left: 2.5vw;
+    padding-right: 2.5vw;
+}
+
+/*Remove the styling that comes with the <a> element*/
+.media, .media:hover, .media:visited, .media:focus {
+    text-decoration: inherit;
+    color: inherit;
+}
+
+#search-text {
+    margin-top: 0;
+    padding-top: 2vh;
+    font-family: "Libre Franklin";
+    font-size: 42px;
+    width: 100%;
+    text-align: center;
+}
+
+.text-right {
+    float: right;
+}
+
+hr {
+    border-color: black;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+img {
+    float: left;
+    margin-right: 1vw;
+}
+
+@media screen and (max-width: 450px) {
+    .backdrop {
+        width: 130px;
+    }
+}
+
+#display {
+    font-family: "Source Serif Pro";
+    font-size: 34px;
+}
+
+.category {
+    font-family: "Source Serif Pro";
+    font-size: 28px;
+}
+
+.title {
+    margin-top: 0;
+    text-decoration: underline;
+}
+
+#people-container .title {
+    font-size: 23px;
+}
+
+.starredIn {
+    font-size: 20px;
+}

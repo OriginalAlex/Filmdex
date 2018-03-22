@@ -1,0 +1,137 @@
+#main-content {
+    width: 65vw;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    background-color: 	#E8E8E8;
+}
+
+@media screen and (max-width: 800px) {
+    #main-content {
+        width: 100vw;
+    }
+}
+
+@media screen and (max-width: 1000px) and (min-width: 801px) {
+    #main-content {
+        width: 75vw;
+    }
+}
+
+#basic-info {
+    background-color: #D3D3D3;
+}
+
+.float-left {
+    float: left;
+}
+
+
+.float-right {
+    float: right;
+}
+
+#film-header {
+    position: relative;
+}
+
+#film-header h2 {
+    font-family: "Raleway";
+    font-weight: 800;
+    font-size: 32px;
+    margin-bottom: 0;
+    padding-left: 15px;
+    text-decoration: underline;
+    display: inline-block;
+    margin-top: 1vh;
+}
+
+#release-year {
+    font-size: 16px;
+}
+
+#film-header h4 {
+    position: absolute;
+    bottom: 0;
+    right: 15px;
+    margin: 0;
+}
+
+#film-header .glyphicon {
+    color: #B8860B;
+    margin-left: 0;
+    font-size: 22px;
+}
+
+#film-header button {
+    padding-left: 0;
+    border: none;
+    background-color: inherit;
+}
+
+#rating {
+    font-size: 22px;
+}
+
+#movie-details {
+    font-family: "Helvetica Neue";
+    font-size: 19px;
+    margin-top: 5px;
+}
+
+#movie-details p {
+    margin-bottom: 0;
+}
+
+#details {
+    padding-left: 15px;
+}
+
+#genres {
+    padding-right: 15px;
+}
+
+#episodes {
+    margin-top: 0.6vh;
+    padding-top: 0.6vh;
+    padding-left: 15px;
+    border-top: 1px solid #585858;
+    position: relative;
+}
+
+#episodes:hover {
+    background-color: #1aa8cd;
+    cursor: pointer;
+}
+
+#episodes p {
+    margin-bottom: 0;
+    font-weight: 600;
+}
+
+#arrow {
+    height: 30px;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 1vw;
+}
+
+#backdropImg {
+    width: 100%;
+    padding: 1vh 1vw 0 1vw;
+}
+
+#textualInfo {
+    padding-left: 15px;
+    padding-right: 15px;
+    font-size: 16px;
+}
+
+#description {
+    margin-top: 13px;
+    padding-right: 5px;
+    width: 90%;
+}
+
+hr {
+    border-color:	#505050;
+}

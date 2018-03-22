@@ -1,0 +1,256 @@
+@@font-face {
+    font-family: "Garamond";
+    src: url("./../../fonts/Adobe Garamond Pro Regular.ttf");
+}
+
+#main-content {
+    width: 65vw;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    background-color: #E8E8E8;
+    display: block;
+    padding-bottom: 2vh;
+    min-height: 100vh;
+}
+
+@media screen and (max-width: 800px) {
+    #main-content {
+        width: 95vw;
+    }
+}
+
+@media screen and (max-width: 1000px) and (min-width: 801px) {
+    #main-content {
+        width: 75vw;
+    }
+}
+
+#main-content-left {
+    padding: 0;
+}
+
+#main-content-left h1 {
+    text-align: center;
+    font-family: "Garamond";
+    color: 	#E8E8E8;
+    font-weight: 600;
+    font-size: 48px;
+    margin-top: 0;
+}
+
+#carousel-stuff {
+    background-color: #484848;
+    padding: 0 2vw 0 2vw;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    color: #E8E8E8;
+}
+
+#main-content-right {
+    height: 100vh;
+    padding: 0;
+    background-color: #F0F0F0;
+}
+
+#main-content-right div {
+    padding-left: 15px;
+    padding-bottom: 1vh;
+}
+
+#main-content-right div:not(:last-child) {
+    border-bottom: 1px solid 	#B0B0B0;
+}
+
+.header {
+    font-family: "Roboto";
+    font-size: 30px;
+    font-weight: 600;
+    color: #484848;
+    padding-bottom: 1vh;
+}
+
+.article {
+    padding-left: 2vw;
+}
+
+#film-carousel img {
+    width: 100%;
+    height: 100%;
+}
+
+hr {
+    border-color:#C0C0C0;
+    margin-left: 1vw;
+    margin-right: 1vw;
+}
+
+#film-carousel button {
+    color: green;
+}
+
+.slick-next {
+    right: 0 !important;
+    margin-right: 13px;
+}
+
+.slick-prev {
+    left: 0 !important;
+    margin-left: 11px;
+}
+
+.slick-arrow {
+    z-index: 99;
+}
+
+.slick-arrow::before {
+    color: black !important;
+    font-size: 30px !important;
+}
+
+.img-wrap {
+    position: relative;
+}
+
+.img-description {
+    position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: #404040;
+}
+
+.text {
+  color: white;
+  font-size: 14px;
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  -ms-transform: translate(-50%, 0%);
+  text-align: center;
+  height: 80%;
+  width: 80%;
+}
+
+.text h2 {
+    font-size: 26px;
+}
+
+.text p {
+    overflow-y: auto;
+    height: 80%;
+}
+
+/*
+The following scrollbar code is taken from: https://gist.github.com/devinrhode2/2573411
+*/
+
+.description::-webkit-scrollbar {
+  width: 8px;
+  background-color: rgba(0,0,0,0);
+  -webkit-border-radius: 100px;
+}
+
+.description::-webkit-scrollbar:hover {
+  background-color: rgba(0, 0, 0, 0.09);
+}
+
+.description::-webkit-scrollbar-thumb:vertical {
+  background: rgba(0,0,0,0.5);
+  -webkit-border-radius: 100px;
+}
+.description::-webkit-scrollbar-thumb:vertical:active {
+  background: rgba(0,0,0,0.61);
+  -webkit-border-radius: 100px;
+}
+
+background: linear-gradient(45deg, white, silver);
+min-height: 100%;
+
+.text h2 {
+    text-decoration: underline;
+}
+
+@media (max-width: 760px) {
+    .text {
+        font-size: 16px;
+    }
+    .text h2 {
+        font-size: 26px;
+    }
+}
+
+@media (max-width: 1000px) and (min-width: 701px) {
+    .text h2 {
+        font-size: 24px;
+    }
+    .text {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 1200px) and (min-width: 1000px) {
+    .text {
+        font-size: 16px;
+    }
+    .text h2 {
+        font-size: 30px;
+    }
+}
+
+@media (min-width: 1350px) {
+
+}
+
+.img-wrap:hover  .img-description {
+  visibility: visible;
+  opacity: 0.9;
+}
+
+#main-content-right div {
+    padding-left: 1vw;
+}
+
+#main-content-right div h4 {
+    font-family: "Arial";
+    font-size: 20px;
+}
+
+@media (max-width: 860px) and (min-width: 767px) {
+    #main-content-right div h4 {
+        font-size: 19px;
+    }
+}
+
+#main-content-right ul {
+    padding: 0;
+    list-style-type: none;
+}
+
+#main-content-right ul li {
+    padding-left: 18px;
+    display: block;
+}
+
+#main-content-right ul li h4 {
+    margin: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+#main-content-right ul li a {
+    color: #0071C9;
+}
+
+#main-content-right ul li:nth-child(2n-1) {
+    background-color: #DCDCDC;
+}
+
+#main-content-right ul li:nth-child(2n) {
+    background-color: #E8E8E8;
+}
