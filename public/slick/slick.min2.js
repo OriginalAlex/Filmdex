@@ -1,5 +1,5 @@
 function waitForElementToDisplay(selector, time) {
-    if(document.querySelector(selector)!=null) {
+    if(document.querySelector(selector)!=null && $(".cast-carousel").length !== 0) {
         ($(".cast-carousel")).slick(
             {
                 slidesToShow: 2,
@@ -13,7 +13,11 @@ function waitForElementToDisplay(selector, time) {
         window.onresize = function() {
             $(".slick-slide").css("height", "auto");
             var stHeight = $(".slick-track").height();
-            console.log(stHeight);
+            $('.slick-slide').css('height',stHeight + "px" );
+        }
+        $(".slick-slide").onresize = function() {
+            $(".slick-slide").css("height", "auto");
+            var stHeight = $(".slick-track").height();
             $('.slick-slide').css('height',stHeight + "px" );
         }
         var stHeight = $(".slick-track").height();

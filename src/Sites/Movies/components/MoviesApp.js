@@ -3,6 +3,7 @@ import React from "react";
 import FilmHeader from "./../../GlobalComponents/Header.js";
 import LoadingScreen from "./../../GlobalComponents/LoadingScreen";
 import CastCarousel from "./../../GlobalComponents/CastCarousel";
+import Reviews from "./../../GlobalComponents/Reviews";
 
 export default class MoviesApp extends React.Component {
     constructor(props) {
@@ -157,14 +158,17 @@ export default class MoviesApp extends React.Component {
                             {this.createCrewList("Director", this.state.directors)}
                             {this.createCrewList("Producer", this.state.producers)}
                         </div>
-                        <hr/>
-                        <h1 id="main-actors">Main Actors</h1>
+                        <hr className="pad"/>
+                        <h1 id="main-actors" className="important-title">Main Actors</h1>
                         <CastCarousel cast={this.state.mainActors}/>
-                        <hr/>
+                        <hr className="pad"/>
+                        <h1 className="important-title">Reviews</h1>
+                        <Reviews reviews={movieData.reviews}/>
+                        <hr className="pad"/>
                     </div>
                     <div id="videos" className="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                         <h1>Featured Videos:</h1>
-                        <div id="videoList">
+                        <div id="videoList" className="fancy-scrollbar">
                             {this.populateVideos()}
                         </div>
                     </div>
