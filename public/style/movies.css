@@ -133,18 +133,18 @@ hr {
     margin-top: 0;
 }
 
-#filmInfo ul {
+#textualInfo ul {
     list-style: none;
     margin-left: 0;
     padding-left: 0;
 }
 
-#filmInfo li {
+#textualInfo li {
     padding-left: 1em;
     text-indent: -1em;
 }
 
-#filmInfo li:before{
+#textualInfo li:before{
     content: "»";
     padding-right: 5px;
     margin-left: 14px;
@@ -152,7 +152,11 @@ hr {
 
 #videos {
     padding-left: 10px;
+    top: 0;
+    -webkit-backface-visibility: hidden;
+-webkit-transform: translateZ(0);
     position: sticky;
+    position: -webkit-sticky;
 }
 
 #videoList {
@@ -205,16 +209,31 @@ iframe {
 	height: 100%;
 }
 
+#main-actors {
+    text-align: center;
+    font-size: 34px;
+}
+
+.cast-member {
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
 .cast-member {
     text-align: center;
-    padding-top: 3.5vh;
-    padding-left: 10%;
-    padding-right: 10%;
     width: 50%;
+    padding-left: 2vw;
+    padding-right: 2vw;
 
+    border-radius: 8px;
+    border: 1px solid #484848;
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-    overflow: auto;
+    color: 	#505050;
     display: inline-block;
+}
+
+.cast-member:hover {
+    color: black;
+    text-decoration: none;
 }
 
 .cast-member h2 {
@@ -231,6 +250,34 @@ iframe {
 }
 
 .cast-member img {
-    width: 60%;
+    width: 70%;
+    border-radius: 15px;
+
+    margin-top: 2vh;
     height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
+
+.slick-arrow::before {
+    color: #696969 !important;
+}
+
+.slick-prev {
+    left: 0 !important;
+}
+
+.slick-next {
+    right: 0 !important;
+}
+
+.slick-slide {
+    margin: 0 27px;
+  }
+  /* the parent */
+  .slick-list {
+    margin: 0 -27px;
+    padding-top: 1.5vh !important;
+    padding-bottom: 1.5vh !important;
+  }

@@ -39,7 +39,7 @@ export default class MoviesApp extends React.Component {
             document.title = data.title;
             var cast = data.credits.cast, crew = data.credits.crew, starArray = [], directors = [], producers = [];
             if (cast != null) {
-                for (var i = 0; i < 3 && i < cast.length; i++) {
+                for (var i = 0; i < 12 && i < cast.length; i++) {
                     starArray.push({
                         name: cast[i].name,
                         characterName: cast[i].character,
@@ -156,11 +156,11 @@ export default class MoviesApp extends React.Component {
                             <hr/>
                             {this.createCrewList("Director", this.state.directors)}
                             {this.createCrewList("Producer", this.state.producers)}
-                            {this.createActorList("Main Actor", this.state.mainActors)}
-                            <hr/>
-                            <CastCarousel cast={this.state.mainActors}/>
-                            <hr/>
                         </div>
+                        <hr/>
+                        <h1 id="main-actors">Main Actors</h1>
+                        <CastCarousel cast={this.state.mainActors}/>
+                        <hr/>
                     </div>
                     <div id="videos" className="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                         <h1>Featured Videos:</h1>

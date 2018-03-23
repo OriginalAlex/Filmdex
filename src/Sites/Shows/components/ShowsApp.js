@@ -101,7 +101,7 @@ export default class ShowsApp extends React.Component {
                             <p>Episode Guide</p>
                             {showData.number_of_episodes} episodes
                         </div>
-                        <div className="float-right"><img id="arrow" src={require("./../../../resources/images/right-arrow.png")}/></div>
+                        <div className="float-right"><img id="arrow" src={require("./../../../resources/images/right-arrow.png")} alt="Right arrow"/></div>
                         <div className="clearfix"></div>
                     </div>
                 </div>
