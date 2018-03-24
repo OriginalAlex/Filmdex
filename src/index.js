@@ -17,7 +17,7 @@ class EntireApp extends React.Component {
                 <BrowserRouter>
                     <Switch>
                         <Route exact path="/" component={HomeApp}/>
-                        <Route exact path="/home" component={HomeApp}/>
+                        <Route exact path=" /home" component={HomeApp}/>
                         <Route exact path="/movies/:id" component={MoviesApp}/>
                         <Route exact path="/shows/:id" component={ShowsApp}/>
                         <Route exact path="/search/:query" component={SearchApp}/>

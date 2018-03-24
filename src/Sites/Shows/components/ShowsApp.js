@@ -22,6 +22,7 @@ export default class ShowsApp extends React.Component {
 
     componentWillMount() {
         this.addLinkToHead("./../style/shows.css");
+        this.addLinkToHead("./../style/MoviesAndShows.css");
     }
 
     makeAPICall() {

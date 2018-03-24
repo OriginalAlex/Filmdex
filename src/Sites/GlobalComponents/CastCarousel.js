@@ -23,8 +23,10 @@ export default class CastCarousel extends React.Component {
     render() {
         if (this.props.cast == null) return "";
         return (
-            <div className="cast-carousel">
-                {this.getCast()}
+            <div>
+                <div className="cast-carousel">
+                    {this.getCast()}
+                </div>
             </div>
         );
     }

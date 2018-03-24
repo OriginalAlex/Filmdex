@@ -1,0 +1,357 @@
+/* This contains the style for the intersection between the "shows.css" and "movies.css" files. Consider it normalization for css :) */
+
+@media screen and (max-width: 800px) {
+    #main-content {
+        width: 100vw;
+    }
+}
+
+@media screen and (max-width: 1000px) and (min-width: 801px) {
+    #main-content {
+        width: 75vw;
+    }
+}
+
+#basic-info {
+    background-color: #D3D3D3;
+}
+
+hr {
+    border-color:	#505050;
+}
+
+#description {
+    margin-top: 13px;
+    padding-right: 5px;
+    width: 90%;
+}
+
+#backdropImg {
+    width: 100%;
+    padding: 1vh 1vw 0 1vw;
+}
+
+.float-left {
+    float: left;
+}
+
+.float-right {
+    float: right;
+}
+
+#film-header {
+    position: relative;
+}
+
+#film-header h2 {
+    font-family: "Raleway";
+    font-weight: 800;
+    font-size: 32px;
+    margin-bottom: 0;
+    padding-left: 15px;
+    text-decoration: underline;
+    display: inline-block;
+    margin-top: 1vh;
+}
+
+#release-year {
+    font-size: 16px;
+}
+
+#film-header h4 {
+    position: absolute;
+    bottom: 0;
+    right: 15px;
+    margin: 0;
+}
+
+#film-header .glyphicon {
+    color: #B8860B;
+    margin-left: 0;
+    font-size: 22px;
+}
+
+#film-header button {
+    padding-left: 0;
+    border: none;
+    background-color: inherit;
+}
+
+#rating {
+    font-size: 22px;
+}
+
+#movie-details {
+    font-family: "Helvetica Neue";
+    font-size: 19px;
+    margin-top: 5px;
+}
+
+#movie-details p {
+    margin-bottom: 0;
+}
+
+#details {
+    padding-left: 15px;
+}
+
+#genres {
+    padding-right: 15px;
+}
+
+#videos {
+    padding-left: 10px;
+    top: 0;
+    -webkit-backface-visibility: hidden;
+-webkit-transform: translateZ(0);
+    position: sticky;
+    position: -webkit-sticky;
+}
+
+#videoList {
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.fancy-scrollbar::-webkit-scrollbar {
+  width: 8px; /* 1px wider than Lion. */
+  /* This is more usable for users trying to click it. */
+  background-color: rgba(0,0,0,0);
+  -webkit-border-radius: 100px;
+}
+/* hover effect for both scrollbar area, and scrollbar 'thumb' */
+.fancy-scrollbar::-webkit-scrollbar:hover {
+  background-color: rgba(0, 0, 0, 0.09);
+}
+
+/* The scrollbar 'thumb' ...that marque oval shape in a scrollbar */
+.fancy-scrollbar::-webkit-scrollbar-thumb:vertical {
+  /* This is the EXACT color of Mac OS scrollbars.
+     Yes, I pulled out digital color meter */
+  background: rgba(0,0,0,0.5);
+  -webkit-border-radius: 100px;
+}
+.fancy-scrollbar::-webkit-scrollbar-thumb:vertical:active {
+  background: rgba(0,0,0,0.61); /* Some darker color when you click it */
+  -webkit-border-radius: 100px;
+}
+
+#videos h1 {
+    margin-top: 10px;
+    text-align: center;
+    font-family: "Helvetica Neue";
+}
+
+.video {
+	position: relative;
+	padding-bottom: 56.25%; /* 16:9 */
+	padding-top: 25px;
+	height: 0;
+    margin-bottom: 2vh;
+}
+
+iframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+
+.important-title {
+    text-align: center;
+    font-size: 34px;
+}
+
+.blockquote {
+    background-color: 	#F5F5F5;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    border-radius: 5px;
+}
+
+.review-content {
+    max-height: 50vh;
+    overflow: auto;
+}
+
+.cast-member {
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.cast-member {
+    text-align: center;
+    width: 50%;
+    padding-bottom: 2vh;
+    padding-left: 2vw;
+    padding-right: 2vw;
+
+    border-radius: 8px;
+    border: 1px solid #484848;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    color: 	#505050;
+    display: inline-block;
+}
+
+.cast-member:hover, .cast-member:focus {
+    color: black;
+    text-decoration: none;
+}
+
+.cast-member h2 {
+    font-size: 22px;
+}
+
+.cast-member h2:last-child {
+    margin-top: 0;
+}
+
+.cast-member h4 {
+    margin-top: 0;
+    margin-bottom: 10px !important;
+}
+
+.cast-member img {
+    width: 70%;
+    border-radius: 15px;
+
+    margin-top: 2vh;
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.slick-arrow {
+    z-index: 999;
+}
+
+.slick-arrow::before {
+    color: #696969 !important;
+}
+
+.slick-prev {
+    left: 0 !important;
+}
+
+.slick-next {
+    right: 0 !important;
+}
+
+.slick-slide {
+    margin: 0 27px;
+  }
+  /* the parent */
+  .slick-list {
+    margin: 0 -27px;
+    padding-top: 1.5vh !important;
+    padding-bottom: 1.5vh !important;
+  }
+
+.profile-picture {
+  display: inline-block;
+}
+
+.comment {
+    position: relative;
+}
+
+.comment-box h1 {
+    font-size: 34px;
+}
+
+.comment-box {
+  margin-top: 10px;
+  width: 90%;
+  height: 100px;
+  -moz-border-bottom-colors: none;
+  -moz-border-left-colors: none;
+  -moz-border-right-colors: none;
+  -moz-border-top-colors: none;
+  background: none repeat scroll 0 0 rgba(0, 0, 0, 0.07);
+  border-color: -moz-use-text-color #FFFFFF #FFFFFF -moz-use-text-color;
+  border-image: none;
+  border-radius: 6px 6px 6px 6px;
+  border-style: none solid solid none;
+  border-width: medium 1px 1px medium;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12) inset;
+  color: #555555;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 1em;
+  line-height: 1.4em;
+  padding: 5px 8px;
+  transition: background-color 0.2s ease 0s;
+}
+
+.comment-box:focus {
+    background: none repeat scroll 0 0 #FFFFFF;
+    outline-width: 0;
+}
+
+#comments-container {
+    margin-top: 3vh;
+}
+
+.comment button {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+}
+
+svg {
+    height: 14px;
+    vertical-align: middle;
+}
+
+.upvote-count {
+    vertical-align: middle;
+    font-size: 18px;
+}
+
+.upvote:hover {
+    fill: #FF4500;
+}
+
+.downvote:hover {
+    fill: #9494FF;
+}
+
+.upvoted {
+    fill: #FF4500;
+}
+
+.downvoted {
+    fill: #9494FF;
+}
+
+.comment-c {
+  display: inline-block;
+  position: absolute;
+  width: 100%;
+  line-height: 1.2;
+
+}
+
+.comment-c a {
+    font-size: 16px;
+}
+
+.comment-c .float-left {
+    margin-left: 6px;
+}
+
+.comment-c button {
+    margin-right: 30px;
+}
+
+.comment-content {
+    margin-top: 1vh;
+}
+
+.comment-content p {
+    margin-bottom: 0;
+}

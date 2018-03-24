@@ -4,6 +4,7 @@ import FilmHeader from "./../../GlobalComponents/Header.js";
 import LoadingScreen from "./../../GlobalComponents/LoadingScreen";
 import CastCarousel from "./../../GlobalComponents/CastCarousel";
 import Reviews from "./../../GlobalComponents/Reviews";
+import CommentBox from "./../../GlobalComponents/CommentBox";
 
 export default class MoviesApp extends React.Component {
     constructor(props) {
@@ -40,7 +41,7 @@ export default class MoviesApp extends React.Component {
             document.title = data.title;
             var cast = data.credits.cast, crew = data.credits.crew, starArray = [], directors = [], producers = [];
             if (cast != null) {
-                for (var i = 0; i < 12 && i < cast.length; i++) {
+                for (var i = 0; i < 15 && i < cast.length; i++) {
                     starArray.push({
                         name: cast[i].name,
                         characterName: cast[i].character,
@@ -69,6 +70,7 @@ export default class MoviesApp extends React.Component {
 
     componentWillMount() {
         this.addLinkToHead("./../style/movies.css");
+        this.addLinkToHead("./../style/MoviesAndShows.css");
         this.addLinkToHead("./../slick/slick.css");
         this.addLinkToHead("./../slick/slick-theme.css");
         this.addScriptToHead("./../slick/slick.min2.js");
@@ -132,6 +134,32 @@ export default class MoviesApp extends React.Component {
         return elements;
     }
 
+    getCastCarousel() {
+        if (this.state.mainActors != null && this.state.mainActors.length !== 0) {
+            return (
+                <div>
+                    <h1 id="main-actors" className="important-title">Main Actors</h1>
+                    <CastCarousel cast={this.state.mainActors}/>
+                    <hr/>
+                </div>
+            );
+        }
+    }
+
+    getReviews() {
+        const reviews = this.state.movieData.reviews;
+        console.log(reviews);
+        if (reviews != null && reviews.results.length !== 0) {
+            return (
+                <div>
+                    <h1 className="important-title">Reviews</h1>
+                    <Reviews reviews={reviews}/>
+                    <hr/>
+                </div>
+            );
+        }
+    }
+
     render() {
         var movieData = this.state.movieData;
         if (Object.keys(movieData).length === 0 && movieData.constructor === Object) { // if movieData is an empty object
@@ -158,13 +186,22 @@ export default class MoviesApp extends React.Component {
                             {this.createCrewList("Director", this.state.directors)}
                             {this.createCrewList("Producer", this.state.producers)}
                         </div>
-                        <hr className="pad"/>
-                        <h1 id="main-actors" className="important-title">Main Actors</h1>
-                        <CastCarousel cast={this.state.mainActors}/>
-                        <hr className="pad"/>
-                        <h1 className="important-title">Reviews</h1>
-                        <Reviews reviews={movieData.reviews}/>
-                        <hr className="pad"/>
+                        <div className="pad">
+                            <hr/>
+                            {this.getCastCarousel()}
+                            {this.getReviews()}
+                            <CommentBox comments={[
+                                {
+                                    poster: {
+                                        username: "AlexCartwright",
+                                    },
+                                    time: 1521918557582,
+                                    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                                    upvotes: 5,
+                                    downvotes: 3
+                                }
+                            ]}/>
+                        </div>
                     </div>
                     <div id="videos" className="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                         <h1>Featured Videos:</h1>

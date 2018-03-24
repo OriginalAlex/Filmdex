@@ -13,8 +13,8 @@ export default class Reviews extends React.Component {
             var review = reviews[i];
             reviewsElement.push(
                 <div key={review.author} className={"col-lg-" + colLg + " col-md-" + colLg + " col-sm-12 col-xs-12"}>
-                    <blockquote className="blockquote fancy-scrollbar">
-                        <p className="mb-0">{review.content.split("_").join("")}</p>
+                    <blockquote className="blockquote">
+                        <p className="mb-0 review-content fancy-scrollbar">{review.content.split("_").join("")}</p>
                         <footer className="blockquote-footer">{review.author}</footer>
                     </blockquote>
                 </div>
@@ -24,6 +24,7 @@ export default class Reviews extends React.Component {
     }
 
     render() {
+        if (this.props.reviews.results == null || this.props.reviews.results.length === 0) return "";
         return (
             <div id="reviews">
                 {this.getContent()}
