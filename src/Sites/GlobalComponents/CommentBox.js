@@ -130,8 +130,8 @@ export default class CommentBox extends React.Component {
                                     <span className="center">Sorted by&nbsp;&nbsp;</span>
                                     <button id="sort-button" className="btn btn-default" type="button" data-toggle="dropdown">{this.state.sortedBy}&nbsp;&nbsp;<span className="caret"/></button>
                                     <ul className="dropdown-menu">
-                                        <li onClick={(e) => this.setSortedBy("new")}>New</li>
-                                        <li onClick={(e) => this.setSortedBy("top")}>Top</li>
+                                        <li onClick={(e) => this.setSortedBy("new")}>{"new"}</li>
+                                        <li onClick={(e) => this.setSortedBy("top")}>top</li>
                                     </ul>
                                 </div>
                             </div>
