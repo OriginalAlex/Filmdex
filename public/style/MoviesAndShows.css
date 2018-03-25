@@ -252,8 +252,61 @@ iframe {
   display: inline-block;
 }
 
+#float-container {
+    display: flex;
+    width: 100%;
+}
+
+.right {
+    order: 2;
+    flex: 0 0 auto;
+}
+
+.left {
+    flex: 1 0 auto;
+}
+
+#comment-dropdown {
+    height: 100%;
+}
+
+#sort-container {
+    height: 100%;
+    -moz-transform:rotate(180deg);
+    -webkit-transform:rotate(180deg);
+    -o-transform:rotate(180deg);
+    -ms-transform:rotate(180deg);
+    filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
+}
+
+#sort {
+    font-family: "Roboto";
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    -moz-transform:rotate(180deg);
+    -webkit-transform:rotate(180deg);
+    -o-transform:rotate(180deg);
+    -ms-transform:rotate(180deg);
+    filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
+}
+
+.dropdown-menu {
+    padding-left: 10px;
+}
+
+.dropdown-menu li {
+    cursor: pointer;
+}
+
 .comment {
+    background-color: 	#F5F5F5;
+    padding: 12px;
     position: relative;
+}
+
+.comment:not(:first-child) {
+    margin-top: 3.3vh;
 }
 
 .comment-box h1 {
@@ -345,7 +398,7 @@ svg {
 }
 
 .comment-c button {
-    margin-right: 30px;
+    margin-right: 53px;
 }
 
 .comment-content {
