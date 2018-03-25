@@ -305,6 +305,11 @@ iframe {
     position: relative;
 }
 
+.comment textarea {
+    height: 80px;
+    width: 100%;
+}
+
 .comment:not(:first-child) {
     margin-top: 3.3vh;
 }
@@ -345,7 +350,7 @@ iframe {
     margin-top: 3vh;
 }
 
-.comment button {
+.comment-c button, .comment-content button {
     background: none;
     color: inherit;
     border: none;
@@ -407,4 +412,9 @@ svg {
 
 .comment-content p {
     margin-bottom: 0;
+}
+
+#comment-misc span {
+    color: #337ab7;
+    cursor: pointer;
 }

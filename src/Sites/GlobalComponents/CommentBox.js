@@ -87,7 +87,7 @@ export default class CommentBox extends React.Component {
             {
                 commentWithReply: id
             }
-        )
+        );
     }
 
     getComments() {
@@ -99,8 +99,8 @@ export default class CommentBox extends React.Component {
                 <Comment
                     metaData={individualComment}
                     key={individualComment.id}
-                    hasReplyField
-                    getReplyField={this.addReplyField.bind(this)}
+                    hasReplyField={hasReplyField}
+                    setReplyField={this.addReplyField.bind(this)}
                     />
             );
         }
@@ -140,6 +140,8 @@ export default class CommentBox extends React.Component {
                 </div>
                 <div className="clearfix"/>
                 <textarea className="comment-box" placeholder="Share your thoughts..." rows="20" name="comment[text]" id="comment_text" cols="40" autoComplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true"></textarea>
+                <br/>
+                <button className="btn btn-primary">Save ⇒</button>
                 <div id="comments-container">
                     {this.getComments()}
                 </div>
