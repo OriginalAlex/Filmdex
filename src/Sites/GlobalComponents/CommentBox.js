@@ -8,8 +8,16 @@ export default class CommentBox extends React.Component {
         this.state = {
             comments: props.comments,
             sortedBy: "new",
-            commentWithReply: -1
+            commentWithReply: -1,
+            primaryMinimize: []
         }
+        this.primaryMinimize = [];
+    }
+
+    componentWillMount() {
+        const comments = this.props.comments;
+        this.commentMap = this.getCommentsWithParent(comments);
+        this.addDepth(this.commentMap, -1, 0);
     }
 
     // parent is either null (i.e. it is at the top) or the ID of the comment that is its parent
@@ -65,10 +73,7 @@ export default class CommentBox extends React.Component {
     }
 
     getSortedComments() {
-        const comments = this.props.comments;
-        var commentMap = this.getCommentsWithParent(comments);
-        this.addDepth(commentMap, -1, 0);
-        return this.sort(commentMap, -1, this.sortByTime);
+        return this.sort(this.commentMap, -1, this.sortByTime);
     }
 
     addDepth(commentMap, parentId, depth) { // add the "depth" a comment is to each comment (also adds the rating)
@@ -90,10 +95,43 @@ export default class CommentBox extends React.Component {
         );
     }
 
+    maximizeOrMinimize(commentMap, parentId, hiddenValue) { // either maximize or minimize a comment and all its children
+        const children = commentMap.get(parentId);
+        if (children == null) return;
+        for (var i = 0; i < children.length; i++) {
+            const child = children[i];
+            this.maximizeOrMinimize(commentMap, child.id, hiddenValue);
+            child.hidden = hiddenValue;
+        }
+    }
+
+    minimize(id) {
+        const commentMap = this.commentMap, primaryMinimize = this.state.primaryMinimize.slice();
+        this.maximizeOrMinimize(commentMap, id, true);
+        primaryMinimize.push(id);
+        this.setState(
+            {
+                primaryMinimize: primaryMinimize
+            }
+        )
+    }
+
+    maximize(id) {
+        const commentMap = this.commentMap, primaryMinimize = this.state.primaryMinimize.slice();
+        this.maximizeOrMinimize(commentMap, id, false);
+        primaryMinimize.splice(primaryMinimize.indexOf(id), 1);
+        this.setState(
+            {
+                primaryMinimize: primaryMinimize
+            }
+        )
+    }
+
     getComments() {
         const comments = this.getSortedComments(), commentsArr = [];
         for (var i = 0; i < comments.length; i++) {
-            var individualComment = comments[i], hasReplyField = false;
+            var individualComment = comments[i], hasReplyField = false, primaryMinimize = false;
+            if (this.state.primaryMinimize.includes(individualComment.id)) primaryMinimize = true;
             if (this.state.commentWithReply === individualComment.id) hasReplyField = true;
             commentsArr.push(
                 <Comment
@@ -101,6 +139,9 @@ export default class CommentBox extends React.Component {
                     key={individualComment.id}
                     hasReplyField={hasReplyField}
                     setReplyField={this.addReplyField.bind(this)}
+                    primaryMinimize={primaryMinimize}
+                    minimize={this.minimize.bind(this)}
+                    maximize={this.maximize.bind(this)}
                     />
             );
         }
@@ -108,7 +149,6 @@ export default class CommentBox extends React.Component {
     }
 
     setSortedBy(sortedBy) {
-        console.log(this.state);
         this.setState(
             {
                 sortedBy: sortedBy

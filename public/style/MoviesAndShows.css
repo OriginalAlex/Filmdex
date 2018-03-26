@@ -350,14 +350,22 @@ iframe {
     margin-top: 3vh;
 }
 
-.comment-c button, .comment-content button {
+.comment .float-right button, .comment-bottomrow button {
     background: none;
     color: inherit;
     border: none;
     padding: 0;
+    padding-left: 5px;
+    padding-right: 5px;
     font: inherit;
     cursor: pointer;
     outline: inherit;
+    -webkit-transition: background-color .5s ease-in-out;
+transition: background-color .5s ease-in-out;
+}
+
+.comment .float-right button:hover {
+    background-color: 	#D8D8D8;
 }
 
 svg {

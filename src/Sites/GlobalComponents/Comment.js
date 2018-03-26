@@ -38,7 +38,7 @@ export default class Comment extends React.Component {
     getStyle() {
         const marginLeft = 30*parseInt(this.state.depth, 10) + "px";
         return {
-            "marginLeft": marginLeft
+            marginLeft: marginLeft
         }
     }
 
@@ -51,11 +51,31 @@ export default class Comment extends React.Component {
         );
     }
 
+
+
     render() {
-        if (this.state.hidden) return;
+        if (this.state.metaData.hidden === true) return "";
         if (this.state.metaData == null) return;
         const metaData = this.state.metaData, poster = metaData.poster, content = metaData.content;
         if (poster == null || content == null) return;
+        if (this.props.primaryMinimize === true) {
+            return (
+                <div className="comment" style={this.getStyle()}>
+                <img className="profile-picture" height="36px" width="auto" src={this.getProfilePicture(content.picture)} alt="Profile"/>
+                <div className="comment-c">
+                    <div className="float-left">
+                        <a href={"/users/" + poster.id}>{poster.username}</a>
+                        <p className="text-muted">{this.getHowLongAgo(metaData.time)}</p>
+                    </div>
+                    <div className="float-right">
+                        <button onClick={() => this.props.maximize(metaData.id)} className="float-right">+</button>
+                    </div>
+                    <div className="clearfix"/>
+                </div>
+                <div className="clearfix"/>
+                </div>
+            );
+        }
         return (
             <div className="comment" style={this.getStyle()}>
                 <img className="profile-picture" height="36px" width="auto" src={this.getProfilePicture(content.picture)} alt="Profile"/>
@@ -65,7 +85,7 @@ export default class Comment extends React.Component {
                         <p className="text-muted">{this.getHowLongAgo(metaData.time)}</p>
                     </div>
                     <div className="float-right">
-                        <button className="float-right">−</button>
+                        <button onClick={() => this.props.minimize(metaData.id)} className="float-right">−</button>
                     </div>
                     <div className="clearfix"/>
                 </div>
