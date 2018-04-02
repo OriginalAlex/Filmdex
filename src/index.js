@@ -8,6 +8,7 @@ import HomeApp from "./Sites/Home/components/HomeApp";
 import MoviesApp from "./Sites/Movies/components/MoviesApp";
 import ShowsApp from './Sites/Shows/components/ShowsApp.js';
 import SearchApp from "./Sites/Search/components/SearchApp";
+import RegisterApp from "./Sites/Register/components/RegisterApp";
 
 class EntireApp extends React.Component {
     render() {
@@ -21,6 +22,7 @@ class EntireApp extends React.Component {
                         <Route exact path="/movies/:id" component={MoviesApp}/>
                         <Route exact path="/shows/:id" component={ShowsApp}/>
                         <Route exact path="/search/:query" component={SearchApp}/>
+                        <Route exact path="/register" component={RegisterApp}/>
                     </Switch>
                 </BrowserRouter>
             </div>

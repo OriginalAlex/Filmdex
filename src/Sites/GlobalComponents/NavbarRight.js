@@ -8,6 +8,16 @@ export default class NavbarRight extends Component {
         }
     }
 
+    componentWillMount() {
+        var username = "", sessionStorageUsername = window.sessionStorage.getItem("username");
+        username = (sessionStorageUsername == null) ? "My Account" : sessionStorageUsername;
+        this.setState(
+            {
+                "username": username
+            }
+        )
+    }
+
     render() {
         if (this.state.isSignedIn) {
             return (
@@ -19,7 +29,7 @@ export default class NavbarRight extends Component {
                             </ul>
                     </li>
                     <li className="dropdown">
-                        <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span className="glyphicon glyphicon-user"/> &nbsp;My Profile <span className="caret"></span></a>
+                        <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span className="glyphicon glyphicon-user"/> &nbsp;{this.state.username} <span className="caret"></span></a>
                         <ul className="dropdown-menu">
                             <li><a href="#"><span className="glyphicon glyphicon-wrench"/> Account Settings</a></li>
                             <li><a href="#"><span className="glyphicon glyphicon-heart"/>&nbsp;&nbsp;My Watch List</a></li>
