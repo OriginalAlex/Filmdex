@@ -9,6 +9,7 @@ import MoviesApp from "./Sites/Movies/components/MoviesApp";
 import ShowsApp from './Sites/Shows/components/ShowsApp.js';
 import SearchApp from "./Sites/Search/components/SearchApp";
 import RegisterApp from "./Sites/Register/components/RegisterApp";
+import SignInApp from "./Sites/SignUp/components/SignInApp";
 
 class EntireApp extends React.Component {
     render() {
@@ -23,6 +24,7 @@ class EntireApp extends React.Component {
                         <Route exact path="/shows/:id" component={ShowsApp}/>
                         <Route exact path="/search/:query" component={SearchApp}/>
                         <Route exact path="/register" component={RegisterApp}/>
+                        <Route exact path="/login" component={SignInApp}/>
                     </Switch>
                 </BrowserRouter>
             </div>

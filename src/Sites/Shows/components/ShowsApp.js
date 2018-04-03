@@ -27,7 +27,7 @@ export default class ShowsApp extends React.Component {
 
     makeAPICall() {
         const thiz = this;
-        fetch("http://localhost:8080/shows/" + this.state.query)
+        fetch("https://localhost:8080/shows/" + this.state.query)
         .then(results => results.json())
         .then(data => {
             thiz.setState({"showData": data});

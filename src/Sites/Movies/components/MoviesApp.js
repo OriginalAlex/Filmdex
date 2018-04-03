@@ -34,7 +34,7 @@ export default class MoviesApp extends React.Component {
 
     makeAPICall() {
         const thiz = this;
-        fetch("http://localhost:8080/films/" + this.state.movieId)
+        fetch("https://localhost:8080/films/" + this.state.movieId)
         .then(results => results.json())
         .then(data => {
             thiz.setState({"movieData": data});

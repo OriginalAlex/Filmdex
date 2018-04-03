@@ -1,11 +1,11 @@
-import React, {Component} from 'react';
+import React from 'react';
 import FilmCarousel from './FilmCarousel';
 import UpcomingFilms from './UpcomingFilms';
 import CloseCinemas from './CloseCinemas';
 
 import LoadingScreen from "./../../GlobalComponents/LoadingScreen";
 
-export default class App extends Component {
+export default class App extends React.Component {
     constructor() {
         super();
         this.state = {
@@ -15,7 +15,7 @@ export default class App extends Component {
 
     makeAPICall() {
         const thiz = this;
-        fetch("http://localhost:8080/basicInfo")
+        fetch("https://localhost:8080/basicInfo")
         .then(results => results.json())
         .then(data => {
             var results = data.popularReleases.results, requiredInfo = [], upcoming = data.upcomingReleases.results, upcomingArr = [];

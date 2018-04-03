@@ -32,7 +32,7 @@ export default class SearchApp extends React.Component {
 
     makeAPICall() {
         const thiz = this;
-        fetch("http://localhost:8080/search/" + this.state.query)
+        fetch("https://localhost:8080/search/" + this.state.query)
         .then(result => result.json())
         .then(data => {
             if (data == null) return;
