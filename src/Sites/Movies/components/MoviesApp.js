@@ -11,7 +11,8 @@ export default class MoviesApp extends React.Component {
         super(props);
         this.state = {
             "movieId": props.match.params.id,
-            "movieData": {}
+            "movieData": {},
+            "comments": []
         }
         this.monthNames = ["January", "February", "March", "April", "May", "June",
       "July", "August", "September", "October", "November", "December"];
@@ -65,6 +66,14 @@ export default class MoviesApp extends React.Component {
                 "directors": directors,
                 "producers": producers
             });
+        });
+        fetch("https://localhost:8080/users/fetchPostsByThread?thread=m-" + this.state.movieId)
+        .then(results => results.json())
+        .then(results => {
+            thiz.setState({
+                "comments": results
+            });
+            console.log(results);
         });
     }
 
@@ -189,30 +198,7 @@ export default class MoviesApp extends React.Component {
                             <hr/>
                             {this.getCastCarousel()}
                             {this.getReviews()}
-                            <CommentBox comments={[
-                                {
-                                    poster: {
-                                        username: "AlexCartwright",
-                                    },
-                                    time: 1521918557582,
-                                    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                                    upvotes: 5,
-                                    downvotes: 3,
-                                    parent: -1,
-                                    id: 1
-                                },
-                                {
-                                    poster: {
-                                        username: "JohnSmith",
-                                    },
-                                    time: 1521918557382,
-                                    content: "Test123",
-                                    upvotes: 5,
-                                    downvotes: 3,
-                                    parent: 1,
-                                    id: 2
-                                }
-                            ]}/>
+                             <CommentBox comments={this.state.comments} thread={"m-" + this.state.movieId}/>
                         </div>
                     </div>
                     <div id="videos" className="col-lg-4 col-md-4 col-sm-4 col-xs-12">

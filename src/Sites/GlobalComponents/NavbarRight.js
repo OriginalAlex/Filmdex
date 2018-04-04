@@ -4,7 +4,7 @@ export default class NavbarRight extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            "isSignedIn": (props.isSignedIn==='true')
+            "isSignedIn": props.isSignedIn
         }
     }
 

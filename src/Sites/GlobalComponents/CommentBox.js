@@ -7,9 +7,12 @@ export default class CommentBox extends React.Component {
         super(props);
         this.state = {
             comments: props.comments,
+            sortedComments: [],
             sortedBy: "new",
             commentWithReply: -1,
-            primaryMinimize: []
+            primaryMinimize: [],
+            commentText: "",
+            thread: props.thread
         }
         this.primaryMinimize = [];
     }
@@ -18,14 +21,32 @@ export default class CommentBox extends React.Component {
         const comments = this.props.comments;
         this.commentMap = this.getCommentsWithParent(comments);
         this.addDepth(this.commentMap, -1, 0);
+        this.setState(
+            {
+                sortedComments: this.sort(this.commentMap, -1, this.sortByTime)
+            }
+        );
+        console.log(this.commentMap);
     }
 
-    // parent is either null (i.e. it is at the top) or the ID of the comment that is its parent
+    componentWillReceiveProps(nextProps) { // if it's possible the comments have updated then redo (this is possible because fetch is async)
+        const comments = nextProps.comments;
+        this.commentMap = this.getCommentsWithParent(comments);
+        this.addDepth(this.commentMap, -1, 0);
+        this.setState(
+            {
+                sortedComments: this.sort(this.commentMap, -1, this.sortByTime)
+            }
+        );
+        console.log(this.commentMap);
+    }
+
+    // parent is either -1 (i.e. it is at the top) or the ID of the comment that is its parent
     getCommentsWithParent(comments) {
         // comments is an array, by default we will sort in newly posted -> oldest
         var commentMap = new Map();
         for (var i = 0; i < comments.length; i++) {
-            var comment = comments[i], parent = comment.parent, arr = commentMap.get(parent);
+            var comment = comments[i], parent = comment.replyingTo, arr = commentMap.get(parent);
             if (arr == null) {
                 commentMap.set(parent, [comment]);
             } else {
@@ -73,7 +94,7 @@ export default class CommentBox extends React.Component {
     }
 
     getSortedComments() {
-        return this.sort(this.commentMap, -1, this.sortByTime);
+        return this.state.sortedComments;
     }
 
     addDepth(commentMap, parentId, depth) { // add the "depth" a comment is to each comment (also adds the rating)
@@ -82,7 +103,17 @@ export default class CommentBox extends React.Component {
         for (var i = 0; i < comments.length; i++) {
             var comment = comments[i];
             comment.depth = depth;
-            comment.rating = parseInt(comment.upvotes, 10) - parseInt(comment.downvotes, 10);
+            var ratings = comment.ratings, upvotes = 0, downvotes = 0;
+            for (var j = 0; j < ratings.length; j++) {
+                var individualRating = ratings[j];
+                console.log(individualRating.isUpvote);
+                if (individualRating.isUpvote === true) {
+                    upvotes++;
+                } else {
+                    downvotes++;
+                }
+            }
+            comment.rating = upvotes - downvotes;
             this.addDepth(commentMap, comment.id, depth+1);
         }
     }
@@ -100,7 +131,13 @@ export default class CommentBox extends React.Component {
         if (children == null) return;
         for (var i = 0; i < children.length; i++) {
             const child = children[i];
-            this.maximizeOrMinimize(commentMap, child.id, hiddenValue);
+            if (hiddenValue === false) {
+                if (!this.state.primaryMinimize.includes(child.id)) {
+                    this.maximizeOrMinimize(commentMap, child.id, hiddenValue);
+                }
+            } else {
+                this.maximizeOrMinimize(commentMap, child.id, hiddenValue);
+            }
             child.hidden = hiddenValue;
         }
     }
@@ -113,7 +150,7 @@ export default class CommentBox extends React.Component {
             {
                 primaryMinimize: primaryMinimize
             }
-        )
+        );
     }
 
     maximize(id) {
@@ -124,11 +161,12 @@ export default class CommentBox extends React.Component {
             {
                 primaryMinimize: primaryMinimize
             }
-        )
+        );
     }
 
     getComments() {
         const comments = this.getSortedComments(), commentsArr = [];
+        if (comments == null) return;
         for (var i = 0; i < comments.length; i++) {
             var individualComment = comments[i], hasReplyField = false, primaryMinimize = false;
             if (this.state.primaryMinimize.includes(individualComment.id)) primaryMinimize = true;
@@ -142,7 +180,8 @@ export default class CommentBox extends React.Component {
                     primaryMinimize={primaryMinimize}
                     minimize={this.minimize.bind(this)}
                     maximize={this.maximize.bind(this)}
-                    />
+                    submitPost={this.handleCommentSubmit.bind(this)}
+                />
             );
         }
         return commentsArr;
@@ -154,6 +193,38 @@ export default class CommentBox extends React.Component {
                 sortedBy: sortedBy
             }
         )
+    }
+
+    handleCommentChange(evt) {
+        this.setState(
+            {
+                commentText: evt.target.value
+            }
+        );
+    }
+
+    handleCommentSubmit(parentId, body) {
+        const commentContent = this.state.commentText;
+        fetch("https://localhost:8080/users/submitPost/", {
+            method: "POST",
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json"
+            },
+            credentials: 'include',
+            body: JSON.stringify(
+                {
+                    body: body,
+                    thread: this.state.thread,
+                    replyingTo: parentId
+                }
+            )
+        })
+        .then(response => response.json())
+        .then(response => {
+            console.log(response);
+            window.location.reload();
+        })
     }
 
     render() {
@@ -179,9 +250,9 @@ export default class CommentBox extends React.Component {
                     </div>
                 </div>
                 <div className="clearfix"/>
-                <textarea className="comment-box" placeholder="Share your thoughts..." rows="20" name="comment[text]" id="comment_text" cols="40" autoComplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true"></textarea>
+                <textarea className="comment-box" onChange={this.handleCommentChange.bind(this)} placeholder="Share your thoughts..." rows="20" name="comment[text]" id="comment_text" cols="40" autoComplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true"></textarea>
                 <br/>
-                <button className="btn btn-primary">Save ⇒</button>
+                <button className="btn btn-primary" onClick={() => this.handleCommentSubmit(-1, this.state.commentText)}>Save ⇒</button>
                 <div id="comments-container">
                     {this.getComments()}
                 </div>

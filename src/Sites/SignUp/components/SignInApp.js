@@ -22,7 +22,6 @@ export default class SignInApp extends React.Component {
     }
 
     handleClick() {
-        const thiz = this;
         fetch("https://localhost:8080/users/signIn", {
             method: "POST",
             headers: {
