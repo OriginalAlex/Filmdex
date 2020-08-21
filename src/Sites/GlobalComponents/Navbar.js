@@ -6,9 +6,11 @@ export default class Navbar extends Component {
 
     constructor(props) {
         super(props);
+        this.checkSignIn();
         this.state = {
-            "signedIn": props.isSignedIn
+            "signedIn": "false"
         };
+
     }
 
     search() {
@@ -59,11 +61,31 @@ export default class Navbar extends Component {
                                     <button id="search-btn" type="submit" onClick={this.search.bind(this)} className="btn btn-default navbar-btn"><span className="glyphicon glyphicon-search"/></button>
                                 </div>
                 			</ul>
-                			<NavbarRight isSignedIn="false"/>
+                			<NavbarRight isSignedIn={this.state.signedIn}/>
                 		</div>
                     </div>
             	</div>
             </nav>
         );
     }
+
+    checkSignIn() {
+      fetch("https://localhost:8080/checkSignedIn/", {
+          method: "GET",
+          headers: {
+              "Accept": "application/json",
+              "Content-Type": "application/json"
+          },
+          credentials: 'include',
+      })
+      .then(result => result.text())
+      .then(result => {
+        if (result === "yes") {
+          this.setState({signedIn: "true"});
+        } else{
+          this.setState({signedIn: "false"});
+        }
+      })
+    }
+
 }

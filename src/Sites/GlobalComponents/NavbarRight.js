@@ -4,7 +4,7 @@ export default class NavbarRight extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            "isSignedIn": props.isSignedIn
+            isSignedIn: props.isSignedIn
         }
     }
 
@@ -20,8 +20,6 @@ export default class NavbarRight extends Component {
 
     render() {
         if (this.state.isSignedIn === "true") {
-          console.log("signed in");
-          console.log(this.state.isSignedIn);
             return (
                 <ul className="nav navbar-nav navbar-right">
                     <li className="dropdown">
@@ -63,6 +61,10 @@ glyphicon glyphicon-log-out"/>&nbsp;&nbsp;Sign out</a></li>
 
     logInPage() {
       window.location.replace("login");
+    }
+
+    componentWillReceiveProps(props) {
+      this.setState({isSignedIn: props.isSignedIn});
     }
 
 }
