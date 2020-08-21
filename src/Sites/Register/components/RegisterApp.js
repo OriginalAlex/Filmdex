@@ -25,13 +25,11 @@ export default class Register extends React.Component {
     }
 
     handleClick() {
+      console.log(this.state);
         const thiz = this;
-        fetch("https://localhost:8080/users/create", {
+        fetch("https://127.0.0.1:8080/users/create", {
             method: "POST",
-            headers: {
-                "Accept": "application/json",
-                "Content-Type": "application/json"
-            },
+            headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
             credentials: 'include',
             body: JSON.stringify(
                 {
@@ -42,6 +40,7 @@ export default class Register extends React.Component {
             )
         })
         .then(function(response) {
+          console.log(response);
             if (response.status == 201) {
                 thiz.setState({registered: true});
             } else {
