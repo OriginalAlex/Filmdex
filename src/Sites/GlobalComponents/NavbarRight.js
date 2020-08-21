@@ -19,7 +19,9 @@ export default class NavbarRight extends Component {
     }
 
     render() {
-        if (this.state.isSignedIn) {
+        if (this.state.isSignedIn === "true") {
+          console.log("signed in");
+          console.log(this.state.isSignedIn);
             return (
                 <ul className="nav navbar-nav navbar-right">
                     <li className="dropdown">
@@ -46,12 +48,21 @@ glyphicon glyphicon-log-out"/>&nbsp;&nbsp;Sign out</a></li>
             return(
                 <ul className="nav navbar-nav navbar-right mr-auto">
                     <li className="navbar-form-container">
-                        <button id="signIn" className="bttn bttn-green navbar-btn">Sign Up</button>
-                        <button className="bttn bttn-blue navbar-btn">Log In</button>
+                        <button id="signIn" className="bttn bttn-green navbar-btn" onClick={this.signUpPage}>Sign Up</button>
+                        <button className="bttn bttn-blue navbar-btn" onClick={this.logInPage}>Log In</button>
                         <div className="clearfix"></div>
                     </li>
                 </ul>
             );
         }
     }
+
+    signUpPage() {
+      window.location.replace("/register");
+    }
+
+    logInPage() {
+      window.location.replace("login");
+    }
+
 }

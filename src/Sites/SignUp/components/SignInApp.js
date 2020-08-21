@@ -5,7 +5,8 @@ export default class SignInApp extends React.Component {
         super();
         this.state = {
             username: "",
-            password: ""
+            password: "",
+            result: "Pending..."
         }
     }
 
@@ -36,11 +37,16 @@ export default class SignInApp extends React.Component {
                 }
             )
         })
+        .then(response => response.text())
         .then(response => {
-            return response.json();
-        })
-        .then(response => {
-            console.log(response);
+          console.log(response.outcome);
+            if (response === "failure") {
+              this.setState({result: "Incorrect username or password"});
+            }
+            else if (response === "success") {
+              this.setState({result: "Signed in"});
+            }
+            return response;
         });
     }
 
@@ -61,6 +67,8 @@ export default class SignInApp extends React.Component {
                 <input type="password" placeholder="Password" onChange={this.reassignPassword.bind(this)}/>
                 <br/>
                 <button className="btn btn-primary" type="submit" onClick={this.handleClick.bind(this)}>Sign In</button>
+                <br/><br/><br/>
+                <p style={{fontSize: 30}}>Status: {this.state.result}</p>
             </div>
         );
     }

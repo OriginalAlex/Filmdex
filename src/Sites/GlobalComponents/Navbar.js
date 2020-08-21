@@ -59,7 +59,7 @@ export default class Navbar extends Component {
                                     <button id="search-btn" type="submit" onClick={this.search.bind(this)} className="btn btn-default navbar-btn"><span className="glyphicon glyphicon-search"/></button>
                                 </div>
                 			</ul>
-                			<NavbarRight isSignedIn="true"/>
+                			<NavbarRight isSignedIn="false"/>
                 		</div>
                     </div>
             	</div>

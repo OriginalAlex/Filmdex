@@ -204,6 +204,7 @@ export default class CommentBox extends React.Component {
     }
 
     handleCommentSubmit(parentId, body) {
+      console.log(body);
         const commentContent = this.state.commentText;
         fetch("https://localhost:8080/users/submitPost/", {
             method: "POST",
