@@ -8,7 +8,7 @@ export default class Navbar extends Component {
         super(props);
         this.checkSignIn();
         this.state = {
-            "signedIn": "false"
+            username: "-1"
         };
 
     }
@@ -61,7 +61,7 @@ export default class Navbar extends Component {
                                     <button id="search-btn" type="submit" onClick={this.search.bind(this)} className="btn btn-default navbar-btn"><span className="glyphicon glyphicon-search"/></button>
                                 </div>
                 			</ul>
-                			<NavbarRight isSignedIn={this.state.signedIn}/>
+                			<NavbarRight username={this.state.username}/>
                 		</div>
                     </div>
             	</div>
@@ -80,10 +80,10 @@ export default class Navbar extends Component {
       })
       .then(result => result.text())
       .then(result => {
-        if (result === "yes") {
-          this.setState({signedIn: "true"});
+        if (result !== "-1") {
+          this.setState({username: result});
         } else{
-          this.setState({signedIn: "false"});
+          this.setState({username: "-1"});
         }
       })
     }
