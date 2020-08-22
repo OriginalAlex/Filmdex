@@ -25,7 +25,7 @@ export default class Comment extends React.Component {
     }
 
     getHowLongAgo(time) {
-        const secondsElapsed = (new Date().getTime() - time)/1000;
+        const secondsElapsed = (new Date().getTime() - new Date(time).getTime())/1000;
         if (secondsElapsed < 60) return this.formatTime(Math.round(secondsElapsed), "second");
         if (secondsElapsed < 3600) return this.formatTime(Math.round(secondsElapsed/60), "minute");
         const hoursElapsed = secondsElapsed/3600;

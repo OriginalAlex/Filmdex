@@ -224,7 +224,6 @@ export default class CommentBox extends React.Component {
         .then(response => response.json())
         .then(response => {
             console.log(response);
-            window.location.reload();
         })
     }
 
