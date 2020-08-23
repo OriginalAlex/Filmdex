@@ -38,6 +38,7 @@ export default class MoviesApp extends React.Component {
         fetch("https://localhost:8080/films/" + this.state.movieId)
         .then(results => results.json())
         .then(data => {
+          console.log(data);
             thiz.setState({"movieData": data});
             document.title = data.title;
             var cast = data.credits.cast, crew = data.credits.crew, starArray = [], directors = [], producers = [];
@@ -73,7 +74,6 @@ export default class MoviesApp extends React.Component {
             thiz.setState({
                 "comments": results
             });
-            console.log(results);
         });
     }
 
@@ -202,7 +202,7 @@ export default class MoviesApp extends React.Component {
                         </div>
                     </div>
                     <div id="videos" className="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                        <h1>Featured Videos:</h1>
+                        <h1>Featured Videos</h1>
                         <div id="videoList" className="fancy-scrollbar">
                             {this.populateVideos()}
                         </div>
