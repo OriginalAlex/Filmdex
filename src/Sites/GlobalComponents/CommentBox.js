@@ -26,7 +26,6 @@ export default class CommentBox extends React.Component {
                 sortedComments: this.sort(this.commentMap, -1, this.sortByTime)
             }
         );
-        console.log(this.commentMap);
     }
 
     componentWillReceiveProps(nextProps) { // if it's possible the comments have updated then redo (this is possible because fetch is async)
@@ -38,7 +37,6 @@ export default class CommentBox extends React.Component {
                 sortedComments: this.sort(this.commentMap, -1, this.sortByTime)
             }
         );
-        console.log(this.commentMap);
     }
 
     // parent is either -1 (i.e. it is at the top) or the ID of the comment that is its parent
@@ -106,8 +104,7 @@ export default class CommentBox extends React.Component {
             var ratings = comment.ratings, upvotes = 0, downvotes = 0;
             for (var j = 0; j < ratings.length; j++) {
                 var individualRating = ratings[j];
-                console.log(individualRating.isUpvote);
-                if (individualRating.isUpvote === true) {
+                if (individualRating.upvote) {
                     upvotes++;
                 } else {
                     downvotes++;

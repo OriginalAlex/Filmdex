@@ -1,6 +1,7 @@
 import React , {Component} from 'react';
 
 export default class NavbarRight extends Component {
+
     constructor(props) {
         super(props);
         this.state = {
@@ -9,7 +10,6 @@ export default class NavbarRight extends Component {
     }
 
     render() {
-      console.log(this.state.username);
         if (this.state.username !== "-1") {
             return (
                 <ul className="nav navbar-nav navbar-right">
@@ -49,15 +49,16 @@ glyphicon glyphicon-log-out"/>&nbsp;&nbsp;Sign out</a></li>
     }
 
     signUpPage() {
-      window.location.replace("/register");
+      window.location.replace("../register");
     }
 
     logInPage() {
-      window.location.replace("login");
+      window.location.replace("../login");
     }
 
     componentWillReceiveProps(props) {
-      this.setState({username: props.username});
+      this.setState({username: props.username.split(" ")[0]});
+      global.userId = props.username.split(" ")[1];
     }
 
     signOut() {
